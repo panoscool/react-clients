@@ -3,6 +3,7 @@ import GoogleLogin from 'react-google-login';
 import './App.css';
 
 class App extends Component {
+
   render() {
     const responseGoogle = (response) => {
       console.log(response);
@@ -10,7 +11,7 @@ class App extends Component {
     return (
       <div className="App">
         <GoogleLogin
-          clientId="411211794868-4mbdl766r7eqa1trb3g27hnme7rsia0d.apps.googleusercontent.com"
+          clientId="411211794868-2kj7ooa8fm0gu41eqn6596m62tfiklro.apps.googleusercontent.com"
           buttonText="Login"
           onSuccess={responseGoogle}
           onFailure={responseGoogle}
