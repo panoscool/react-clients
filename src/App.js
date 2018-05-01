@@ -15,15 +15,25 @@ class App extends Component {
     }
   }
 
-  /* se afto den katalaveno pou ginete o elegxos an o xristis einai logged in i oxi
-  
-  gia na allakso to state skeftika na ftiakso mia if ( sinthiki pou prepi na elenkso ) {
-    this.setState( authenticated: true )
+  onSuccess = res => {
+    Authentication.success(res)
+    this.setState({
+        authenticated: true
+    })
   }
-  */
+
+  logout = () => {
+    Authentication.destroy()
+    this.setState({
+        authenticated:false
+    })
+  }
 
   render() {
     const { authenticated, user } = this.state;
+
+
+    console.log(`the state of loggedIn is ${this.state.authenticated}`)
 
     return (
       <div className="App">
