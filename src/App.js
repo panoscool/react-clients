@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 
-  onSuccess = res => {
+  onSuccess = (res) => {
     Authentication.success(res)
     this.setState({
         authenticated: true
@@ -32,8 +32,7 @@ class App extends Component {
   render() {
     const { authenticated, user } = this.state;
 
-
-    console.log(`the state of loggedIn is ${this.state.authenticated}`)
+    console.log(`the state of loggedIn is ${authenticated}`)
 
     return (
       <div className="App">
@@ -46,14 +45,14 @@ class App extends Component {
             </div>
 
             <div>
-              <button onClick={() => Authentication.destroy()}>Log out</button>
+              <button onClick={() => this.logout()}>Log out</button>
             </div>
           </div>
           :
           <GoogleLogin
             clientId="411211794868-2kj7ooa8fm0gu41eqn6596m62tfiklro.apps.googleusercontent.com"
             buttonText="Login"
-            onSuccess={Authentication.success}
+            onSuccess={this.onSuccess}
             onFailure={Authentication.failure}
           />
         }
