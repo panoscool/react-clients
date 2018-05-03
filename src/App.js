@@ -3,6 +3,7 @@ import GoogleLogin from 'react-google-login';
 import './App.css';
 
 import Authentication from './services/authentication';
+import Login from './components/login/login';
 
 class App extends Component {
 
@@ -14,20 +15,28 @@ class App extends Component {
       user: Authentication.getUserData(), // either an object or null
     }
   }
-
+/*
   onSuccess = (res) => {
     Authentication.success(res)
     this.setState({
-        authenticated: true
+      authenticated: true
+    })
+  }
+
+  onFailure = (res) => {
+    Authentication.failure()
+    this.setState({
+      authenticated: false
     })
   }
 
   logout = () => {
     Authentication.destroy()
     this.setState({
-        authenticated:false
+      authenticated: false
     })
   }
+  */
 
   render() {
     const { authenticated, user } = this.state;
@@ -43,19 +52,24 @@ class App extends Component {
               <div><img src={user.imageUrl} alt="Profile Image" /></div>
               <div>{user.name}</div>
             </div>
-
+            
             <div>
               <button onClick={() => this.logout()}>Log out</button>
             </div>
           </div>
           :
+          /*
           <GoogleLogin
             clientId="411211794868-2kj7ooa8fm0gu41eqn6596m62tfiklro.apps.googleusercontent.com"
             buttonText="Login"
             onSuccess={this.onSuccess}
-            onFailure={Authentication.failure}
+            onFailure={this.onFailure}
           />
+          */
+         <Login authenticated={this.state.authenticated} user={this.state.user} />
         }
+
+        
 
       </div>
     );

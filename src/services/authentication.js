@@ -9,7 +9,7 @@ export default class Authentication {
   static getUserData() {
     const profileData = storage.getItem(authenticationKey);
 
-    return profileData ? JSON.parse(profileData) : {};
+    return profileData ? JSON.parse(profileData) : null;
   }
 
   /**
