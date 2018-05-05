@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import './App.css';
 
 import Authentication from './services/authentication';
-import Login from './components/login/login';
+import Home from './components/home/main';
+import Login from './components/login/main';
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props) {
     super(props);
@@ -15,17 +16,17 @@ class App extends Component {
     }
   }
 
-  login() {
-    this.setState({
-      authenticated: true,
-      user: Authentication.getUserData()
-    })
-  }
-
   logout() {
     Authentication.destroy()
     this.setState({
       authenticated: false
+    })
+  }
+
+  login() {
+    this.setState({
+      authenticated: true,
+      user: Authentication.getUserData()
     })
   }
 
@@ -36,23 +37,12 @@ class App extends Component {
       <div className="App">
 
         {authenticated ?
-          <div>
-            <div>
-              <div><img src={user.imageUrl} alt="Avatar" /></div>
-              <div>{user.name}</div>
-            </div>
-            
-            <div>
-              <button onClick={() => this.logout()}>Log out</button>
-            </div>
-          </div>
+          <Home app={this} user={user} />
           :
-          <Login onLogin={() => this.login()}/>
+          <Login app={this} />
         }
 
       </div>
     );
   }
 }
-
-export default App;

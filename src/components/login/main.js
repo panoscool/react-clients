@@ -7,7 +7,7 @@ class Login extends Component {
 
   onSuccess(res) {
     Authentication.success(res)
-    this.props.onLogin();
+    this.props.app.login();
   }
 
   onFailure(res) {
