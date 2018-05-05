@@ -5,41 +5,25 @@ import Authentication from '../../services/authentication';
 
 class Login extends Component {
 
-  onSuccess = (res) => {
+  onSuccess(res) {
     Authentication.success(res)
-    this.setState({
-      authenticated: true
-    })
+    this.props.onLogin();
   }
 
-  onFailure = (res) => {
-    Authentication.failure()
-    this.setState({
-      authenticated: false
-    })
-  }
-
-  logout = () => {
-    Authentication.destroy()
-    this.setState({
-      authenticated: false
-    })
+  onFailure(res) {
+    Authentication.failure(res)
   }
 
   render() {
-    const { authenticated, user } = this.props;
-
-    console.log(`the state of loggedIn is ${authenticated}`)
-
     return (
       <div className="Login">
         
         <GoogleLogin
-            clientId="411211794868-2kj7ooa8fm0gu41eqn6596m62tfiklro.apps.googleusercontent.com"
-            buttonText="Login"
-            onSuccess={this.onSuccess}
-            onFailure={this.onFailure}
-          />
+          clientId="411211794868-2kj7ooa8fm0gu41eqn6596m62tfiklro.apps.googleusercontent.com"
+          buttonText="Login"
+          onSuccess={(res) => this.onSuccess(res)}
+          onFailure={(res) => this.onFailure(res)}
+        />
 
       </div>
     );
