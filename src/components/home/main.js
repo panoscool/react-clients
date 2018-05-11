@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Customers from './../customers/customers';
 
 export default class Home extends Component {
 
@@ -20,6 +21,7 @@ export default class Home extends Component {
         <div>
           <button onClick={() => this.logout()}>Log out</button>
         </div>
+        <Customers />
       </div>
     )
   }
