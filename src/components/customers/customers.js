@@ -30,7 +30,7 @@ export default class Customers extends Component {
         }
     }
 
-    searchFilter(e) {
+    searchFilter = (e) => {
         this.setState({search: e.target.value})
     }
 
@@ -41,7 +41,7 @@ export default class Customers extends Component {
         <div>
         {customers.filter(customer => {
             if (search === "") return true
-            else return cutomer.firstName.match(re) || cutomer.lastName.match(re) || cutomer.phone.match(re)
+            else return customer.firstName.match(re) || customer.lastName.match(re) || customer.phone.match(re)
         }).map((cutomer, key) => 
             <div className="customersList" key={key}>
                 {cutomer.firstName} {cutomer.lastName} {cutomer.phone}
