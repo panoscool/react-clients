@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-let customers = [{
+const customers = [{
     firstName: "Stratos", 
     lastName: "G", 
     phone: "1234567890"
@@ -35,17 +35,19 @@ export default class Customers extends Component {
     }
 
    render() {
-    let customersList = customers.map((cutomer) => 
-    <div className="customersList" key={cutomer.phone}>
-        {cutomer.firstName} {cutomer.lastName} {cutomer.phone}
-    </div>)
-
+    const {search} = this.state
+    const re = new RegExp(this.state.search, 'gi')
      return (
         <div>
-            {customersList}
-            <input type="text" 
-                value={this.state.search} 
-                onChange={this.searchFilter.bind(this)}/>
+        {customers.filter(customer => {
+            if (search === "") return true
+            else return cutomer.firstName.match(re) || cutomer.lastName.match(re) || cutomer.phone.match(re)
+        }).map((cutomer, key) => 
+            <div className="customersList" key={key}>
+                {cutomer.firstName} {cutomer.lastName} {cutomer.phone}
+            </div>)}
+    
+            <input type="text" onChange={this.searchFilter}/>
         </div>  
     )
   }
