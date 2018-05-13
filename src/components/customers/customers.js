@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './customers.css';
 
 const customers = [{
     firstName: "Stratos", 
@@ -43,11 +44,14 @@ export default class Customers extends Component {
             if (search === "") return true
             else return customer.firstName.match(re) || customer.lastName.match(re) || customer.phone.match(re)
         }).map((cutomer, key) => 
-            <div className="customersList" key={key}>
+            <div className="Customers" key={key}>
+                <li>
                 {cutomer.firstName} {cutomer.lastName} {cutomer.phone}
+                </li>
             </div>)}
-    
+            <div className="input">
             <input type="text" onChange={this.searchFilter}/>
+            </div>
         </div>  
     )
   }

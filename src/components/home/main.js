@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Customers from './../customers/customers';
+import './main.css';
 
 export default class Home extends Component {
 
