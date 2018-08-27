@@ -1,3 +1,36 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas:
+    "search header header"
+    "navbar main main"
+    "navbar main main"
+    "navbar main main"
+    "footer footer footer"
+}
+
 .App {
   text-align: center;
 }
+
+.header {
+  grid-area: header;
+}
+
+.search-bar {
+  grid-area: search;
+}
+
+.navbar {
+  grid-area: navbar;
+}
+
+.main {
+  grid-area: main;
+}
+
+.footer {
+  grid-area: footer;
+}
+

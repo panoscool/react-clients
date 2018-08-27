@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
 import './App.css';
 
 import Authentication from './services/authentication';
@@ -34,15 +35,17 @@ export default class App extends Component {
     const { authenticated, user } = this.state;
 
     return (
-      <div className="App">
+      <BrowserRouter>
 
-        {authenticated ?
-          <Home app={this} user={user} />
-          :
-          <Login app={this} />
-        }
+          {authenticated ?
 
-      </div>
+          <div className="App">
+            <Route path="/" render={(props) => <Home {...props} app={this} user={user} /> }/>
+          </div>
+            :
+            <Login app={this} />
+          }
+      </BrowserRouter>
     );
   }
 }

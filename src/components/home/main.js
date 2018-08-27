@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../header/main';
-import Products from '../products';
 import Menu from '../menu/main';
-import '../../style/layout.css';
 import Footer from '../footer/main';
+import SearchBar from '../../containers/search';
 
 export default class Home extends Component {
 
@@ -25,15 +24,16 @@ export default class Home extends Component {
         <div className="logout">
           <button onClick={() => this.logout()}>Log out</button>
         </div>
+
         <div className="grid-container">
           <div className="header">
             <Header />
           </div>
+          <div className="search-bar">
+            <SearchBar />
+          </div>
           <div className="navbar">
             <Menu />
-          </div>
-          <div className="main">
-            <Products />
           </div>
           <div className="footer">
             <Footer />
