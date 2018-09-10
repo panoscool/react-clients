@@ -1,11 +1,13 @@
-import _ from 'lodash';
-import { FETCH_PRODUCTS } from '../actions';
+import _ from "lodash";
+import { FETCH_PRODUCTS } from "../actions";
 
-export default function(state = {}, action) {
+const productsReducer = (state = {}, action) => {
   switch (action.type) {
     case FETCH_PRODUCTS:
-      return _.mapKeys(action.payload.data, 'id')
+      return _.mapKeys(action.payload.data, "id");
     default:
-      state;
+      return state;
   }
-}
+};
+
+export default productsReducer;
